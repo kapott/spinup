@@ -1,6 +1,6 @@
 # Integration Tests
 
-This directory contains the integration test framework and tests for continueplz.
+This directory contains the integration test framework and tests for spinup.
 
 ## Overview
 

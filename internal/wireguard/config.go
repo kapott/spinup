@@ -26,8 +26,8 @@ const (
 	ServerAllowedIPs = "10.13.37.1/32"
 	// DefaultKeepalive is the persistent keepalive interval in seconds.
 	DefaultKeepalive = 25
-	// InterfaceName is the WireGuard interface name used by continueplz.
-	InterfaceName = "wg-continueplz"
+	// InterfaceName is the WireGuard interface name used by spinup.
+	InterfaceName = "wg-spinup"
 )
 
 // ClientConfig holds the configuration for generating a client-side WireGuard config.
@@ -96,7 +96,7 @@ AllowedIPs = {{ .ClientAllowedIPs }}
 `
 
 // serverCloudInitTemplate is the template for server-side WireGuard config in cloud-init YAML format.
-const serverCloudInitTemplate = `# WireGuard configuration for continueplz
+const serverCloudInitTemplate = `# WireGuard configuration for spinup
 # Generated for cloud-init injection
 wireguard:
   interfaces:

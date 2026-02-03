@@ -1,4 +1,4 @@
-// Package deploy provides deployment orchestration for continueplz.
+// Package deploy provides deployment orchestration for spinup.
 package deploy
 
 import (
@@ -11,7 +11,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/tmeurs/continueplz/internal/wireguard"
+	"github.com/tmeurs/spinup/internal/wireguard"
 )
 
 // SpotInterruptionReason represents the reason for a spot interruption.
@@ -347,15 +347,15 @@ func GenerateSpotInterruptMonitorScript(port int, provider string) string {
 	}
 
 	return fmt.Sprintf(`#!/bin/bash
-# Spot Interruption Monitor for continueplz
+# Spot Interruption Monitor for spinup
 # Provider: %s
 # Monitors provider metadata service for termination notices
 # Serves interruption status via HTTP on port %d
 
 PORT=%d
 PROVIDER="%s"
-INTERRUPT_FILE="/tmp/continueplz-interrupted"
-LOG_FILE="/var/log/continueplz-spot-monitor.log"
+INTERRUPT_FILE="/tmp/spinup-interrupted"
+LOG_FILE="/var/log/spinup-spot-monitor.log"
 
 log() {
     echo "$(date -Iseconds) $1" >> "$LOG_FILE"

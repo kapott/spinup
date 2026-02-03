@@ -1,4 +1,4 @@
-// Package deploy provides deployment orchestration for continueplz.
+// Package deploy provides deployment orchestration for spinup.
 package deploy
 
 import (
@@ -10,7 +10,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/tmeurs/continueplz/internal/wireguard"
+	"github.com/tmeurs/spinup/internal/wireguard"
 )
 
 // HeartbeatConfig holds configuration for the heartbeat client.
@@ -20,7 +20,7 @@ type HeartbeatConfig struct {
 	Interval time.Duration
 
 	// HeartbeatFile is the path to touch on the remote instance.
-	// Default is /tmp/continueplz-heartbeat.
+	// Default is /tmp/spinup-heartbeat.
 	HeartbeatFile string
 
 	// ServerIP is the WireGuard IP of the server.
@@ -465,7 +465,7 @@ func GenerateHeartbeatServerScript(port int, heartbeatFile string) string {
 	}
 
 	return fmt.Sprintf(`#!/bin/bash
-# Heartbeat server for continueplz
+# Heartbeat server for spinup
 # Listens on port %d and touches %s on POST /heartbeat
 
 HEARTBEAT_FILE="%s"

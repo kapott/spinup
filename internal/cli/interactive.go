@@ -1,4 +1,4 @@
-// Package cli provides the Cobra CLI commands for continueplz.
+// Package cli provides the Cobra CLI commands for spinup.
 package cli
 
 import (
@@ -7,13 +7,13 @@ import (
 	"time"
 
 	tea "github.com/charmbracelet/bubbletea"
-	"github.com/tmeurs/continueplz/internal/config"
-	"github.com/tmeurs/continueplz/internal/deploy"
-	"github.com/tmeurs/continueplz/internal/logging"
-	"github.com/tmeurs/continueplz/internal/models"
-	providerPkg "github.com/tmeurs/continueplz/internal/provider"
-	"github.com/tmeurs/continueplz/internal/provider/registry"
-	"github.com/tmeurs/continueplz/internal/ui"
+	"github.com/tmeurs/spinup/internal/config"
+	"github.com/tmeurs/spinup/internal/deploy"
+	"github.com/tmeurs/spinup/internal/logging"
+	"github.com/tmeurs/spinup/internal/models"
+	providerPkg "github.com/tmeurs/spinup/internal/provider"
+	"github.com/tmeurs/spinup/internal/provider/registry"
+	"github.com/tmeurs/spinup/internal/ui"
 )
 
 // InteractiveModel is the main model for interactive mode when no instance is running.
@@ -384,7 +384,7 @@ func CheckAndRunInteractive() (bool, error) {
 
 	// Check for at least one configured provider
 	if !cfg.HasAnyProvider() {
-		return false, fmt.Errorf("no providers configured - run 'continueplz init' first")
+		return false, fmt.Errorf("no providers configured - run 'spinup init' first")
 	}
 
 	// Create state manager

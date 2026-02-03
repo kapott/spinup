@@ -5,7 +5,7 @@ import (
 	"time"
 
 	tea "github.com/charmbracelet/bubbletea"
-	"github.com/tmeurs/continueplz/internal/deploy"
+	"github.com/tmeurs/spinup/internal/deploy"
 )
 
 func TestNewStopProgressModel(t *testing.T) {

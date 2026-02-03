@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/tmeurs/continueplz/internal/provider"
+	"github.com/tmeurs/spinup/internal/provider"
 )
 
 func TestProvider_Name(t *testing.T) {

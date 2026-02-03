@@ -9,9 +9,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/tmeurs/continueplz/internal/config"
-	"github.com/tmeurs/continueplz/internal/provider"
-	"github.com/tmeurs/continueplz/internal/provider/mock"
+	"github.com/tmeurs/spinup/internal/config"
+	"github.com/tmeurs/spinup/internal/provider"
+	"github.com/tmeurs/spinup/internal/provider/mock"
 )
 
 // TestEnv holds the test environment configuration.
@@ -130,7 +130,7 @@ func NewTestEnv(t *testing.T, opts ...Option) *TestEnv {
 
 	// Create a temporary state file for tests
 	tmpDir := t.TempDir()
-	env.StateFile = tmpDir + "/.continueplz.state"
+	env.StateFile = tmpDir + "/.spinup.state"
 
 	var err error
 	env.StateManager, err = config.NewStateManager(tmpDir)

@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/tmeurs/continueplz/internal/config"
+	"github.com/tmeurs/spinup/internal/config"
 )
 
 func TestReconcileMismatchType_String(t *testing.T) {

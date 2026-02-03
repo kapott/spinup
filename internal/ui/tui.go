@@ -1,4 +1,4 @@
-// Package ui provides the TUI (Terminal User Interface) for continueplz.
+// Package ui provides the TUI (Terminal User Interface) for spinup.
 // It uses Bubbletea for the interactive interface and lipgloss for styling.
 package ui
 
@@ -9,7 +9,7 @@ import (
 
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
-	"github.com/tmeurs/continueplz/internal/config"
+	"github.com/tmeurs/spinup/internal/config"
 )
 
 // View represents the different views in the TUI
@@ -426,7 +426,7 @@ func (m Model) renderFrame(content string) string {
 
 // renderHeader renders the application header
 func (m Model) renderHeader() string {
-	title := "continueplz"
+	title := "spinup"
 	subtitle := "GPU Code Assistant Launcher"
 
 	titleStyle := Styles.Title.Width(m.width)

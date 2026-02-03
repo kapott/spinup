@@ -31,7 +31,7 @@ type VerifyResult struct {
 
 // VerifyOptions configures the connection verification behavior.
 type VerifyOptions struct {
-	// InterfaceName is the WireGuard interface name (default: wg-continueplz).
+	// InterfaceName is the WireGuard interface name (default: wg-spinup).
 	InterfaceName string
 	// ServerIP is the WireGuard IP of the server (default: 10.13.37.1).
 	ServerIP string
@@ -318,7 +318,7 @@ func formatTunnelStatusError(err error, interfaceName string) string {
 				"  - The tunnel has not been set up yet\n"+
 				"  - The tunnel was torn down\n"+
 				"  - WireGuard is not installed or not running\n"+
-				"Try: Run 'continueplz' to set up a new instance, or check WireGuard installation",
+				"Try: Run 'spinup' to set up a new instance, or check WireGuard installation",
 			interfaceName)
 	}
 

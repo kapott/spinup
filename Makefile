@@ -1,7 +1,7 @@
-# Makefile for continueplz
+# Makefile for spinup
 
 # Build variables
-BINARY_NAME := continueplz
+BINARY_NAME := spinup
 VERSION := $(shell git describe --tags --always --dirty 2>/dev/null || echo "dev")
 COMMIT := $(shell git rev-parse --short HEAD 2>/dev/null || echo "unknown")
 DATE := $(shell date -u +"%Y-%m-%dT%H:%M:%SZ")
@@ -16,7 +16,7 @@ GOFMT := gofmt
 GOMOD := $(GOCMD) mod
 
 # Directories
-CMD_DIR := ./cmd/continueplz
+CMD_DIR := ./cmd/spinup
 BUILD_DIR := ./build
 COVERAGE_FILE := coverage.out
 
@@ -123,7 +123,7 @@ dev:
 # Show help
 .PHONY: help
 help:
-	@echo "continueplz Makefile targets:"
+	@echo "spinup Makefile targets:"
 	@echo ""
 	@echo "  build          Build for current platform"
 	@echo "  install        Install to GOPATH/bin"

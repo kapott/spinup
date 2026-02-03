@@ -1,4 +1,4 @@
-// Package alert provides alerting functionality for continueplz.
+// Package alert provides alerting functionality for spinup.
 // It implements webhook notifications for critical events and errors.
 package alert
 
@@ -10,7 +10,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/tmeurs/continueplz/internal/logging"
+	"github.com/tmeurs/spinup/internal/logging"
 )
 
 // Level represents the severity of an alert.
@@ -142,7 +142,7 @@ func (wc *WebhookClient) SendAlert(ctx context.Context, level Level, message str
 	}
 
 	req.Header.Set("Content-Type", "application/json")
-	req.Header.Set("User-Agent", "continueplz/1.0")
+	req.Header.Set("User-Agent", "spinup/1.0")
 
 	resp, err := wc.httpClient.Do(req)
 	if err != nil {

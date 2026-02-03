@@ -12,7 +12,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/tmeurs/continueplz/internal/provider"
+	"github.com/tmeurs/spinup/internal/provider"
 )
 
 const (
@@ -661,7 +661,7 @@ func (c *Client) CreateInstance(ctx context.Context, req provider.CreateRequest)
 		// Use a base image with SSH access
 		Image:   "vastai/base-image:latest",
 		Runtype: "ssh",
-		Label:   "continueplz",
+		Label:   "spinup",
 	}
 
 	// Set disk size (default to 100GB if not specified)

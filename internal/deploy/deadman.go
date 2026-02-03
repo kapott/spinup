@@ -1,4 +1,4 @@
-// Package deploy provides deployment orchestration for continueplz.
+// Package deploy provides deployment orchestration for spinup.
 package deploy
 
 import (
@@ -18,7 +18,7 @@ type DeadmanConfig struct {
 
 	// HeartbeatFile is the path to the heartbeat file on the instance.
 	// The client must periodically touch this file to prevent termination.
-	// Default is /tmp/continueplz-heartbeat
+	// Default is /tmp/spinup-heartbeat
 	HeartbeatFile string
 
 	// CheckIntervalSeconds is how often the deadman script checks the heartbeat file.
@@ -79,7 +79,7 @@ const (
 	DefaultDeadmanTimeout = 10 * time.Hour
 
 	// DefaultHeartbeatFile is the default heartbeat file path on the instance.
-	DefaultHeartbeatFile = "/tmp/continueplz-heartbeat"
+	DefaultHeartbeatFile = "/tmp/spinup-heartbeat"
 
 	// DefaultCheckInterval is the default check interval (60 seconds).
 	DefaultCheckInterval = 60 * time.Second

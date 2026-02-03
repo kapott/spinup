@@ -266,7 +266,7 @@ func TestInitWizardView(t *testing.T) {
 
 	// Check for key elements in the view
 	expectedElements := []string{
-		"continueplz setup",
+		"spinup setup",
 		"Which providers do you want to configure",
 		"Vast.ai",
 		"Lambda Labs",

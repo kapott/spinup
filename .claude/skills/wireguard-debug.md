@@ -20,14 +20,14 @@ User invokes `/wireguard-debug` or reports WireGuard connectivity issues.
 
 3. **Check interface status**:
    ```bash
-   ip link show wg-continueplz 2>/dev/null || echo "Interface not found"
+   ip link show wg-spinup 2>/dev/null || echo "Interface not found"
    # macOS alternative:
    ifconfig utun* 2>/dev/null
    ```
 
 4. **Verify handshake**:
    ```bash
-   sudo wg show wg-continueplz latest-handshakes
+   sudo wg show wg-spinup latest-handshakes
    ```
    - If no handshake in last 3 minutes, connection likely failed
 
@@ -66,7 +66,7 @@ User invokes `/wireguard-debug` or reports WireGuard connectivity issues.
 ## WireGuard Diagnostic Report
 
 ### Status
-- Interface: wg-continueplz [UP/DOWN/MISSING]
+- Interface: wg-spinup [UP/DOWN/MISSING]
 - Handshake: [TIME] ago / Never
 - Transfer: RX [bytes] / TX [bytes]
 

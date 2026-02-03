@@ -6,7 +6,7 @@ import (
 	"time"
 
 	tea "github.com/charmbracelet/bubbletea"
-	"github.com/tmeurs/continueplz/internal/config"
+	"github.com/tmeurs/spinup/internal/config"
 )
 
 func TestNewStatusModel(t *testing.T) {
@@ -125,7 +125,7 @@ func TestStatusModelViewWithState(t *testing.T) {
 		},
 		WireGuard: &config.WireGuardState{
 			ServerPublicKey: "test-key",
-			InterfaceName:   "wg-continueplz",
+			InterfaceName:   "wg-spinup",
 		},
 		Cost: &config.CostState{
 			HourlyRate:  0.65,

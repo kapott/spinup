@@ -14,7 +14,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/tmeurs/continueplz/internal/provider"
+	"github.com/tmeurs/spinup/internal/provider"
 )
 
 const (
@@ -611,7 +611,7 @@ func (c *Client) CreateInstance(ctx context.Context, req provider.CreateRequest)
 	// The OfferID for Paperspace is the template ID
 	createReq := paperspaceCreateRequest{
 		TemplateID:     req.OfferID,
-		MachineName:    fmt.Sprintf("continueplz-%d", time.Now().Unix()),
+		MachineName:    fmt.Sprintf("spinup-%d", time.Now().Unix()),
 		BillingType:    "hourly",
 		AssignPublicIp: true,
 		PublicIpType:   "dynamic",

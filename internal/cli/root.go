@@ -1,4 +1,4 @@
-// Package cli provides the Cobra CLI commands for continueplz.
+// Package cli provides the Cobra CLI commands for spinup.
 package cli
 
 import (
@@ -6,7 +6,7 @@ import (
 	"os"
 
 	"github.com/spf13/cobra"
-	"github.com/tmeurs/continueplz/internal/logging"
+	"github.com/tmeurs/spinup/internal/logging"
 )
 
 // Version information set at build time
@@ -38,9 +38,9 @@ var showVersion bool
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "continueplz",
+	Use:   "spinup",
 	Short: "Ephemeral GPU Code Assistant",
-	Long: `continueplz - Ephemeral GPU instances for code-assist LLMs
+	Long: `spinup - Ephemeral GPU instances for code-assist LLMs
 
 A CLI tool that spins up ephemeral GPU instances with code-assist LLMs.
 It compares prices across cloud GPU providers, deploys models via Ollama,
@@ -49,7 +49,7 @@ sets up WireGuard tunnels, and guarantees cleanup.`,
 		// Initialize logging with verbosity from command line flags
 		// verbose is a count: 0 = default, 1 = -v, 2+ = -vv
 		cfg := logging.Config{
-			LogFile:       "continueplz.log",
+			LogFile:       "spinup.log",
 			Verbosity:     verbose,
 			ConsoleOutput: verbose > 0, // Enable console output if any verbosity is set
 		}
@@ -74,7 +74,7 @@ sets up WireGuard tunnels, and guarantees cleanup.`,
 					"date":    Date,
 				})
 			} else {
-				fmt.Printf("continueplz %s (commit: %s, built: %s)\n", Version, Commit, Date)
+				fmt.Printf("spinup %s (commit: %s, built: %s)\n", Version, Commit, Date)
 			}
 			return
 		}
@@ -116,7 +116,7 @@ sets up WireGuard tunnels, and guarantees cleanup.`,
 		// Default behavior: interactive TUI
 		// If no instance is running, shows deployment flow
 		// If instance is running, shows status view with actions
-		log.Info().Msg("Launching continueplz")
+		log.Info().Msg("Launching spinup")
 		_, err := CheckAndRunInteractive()
 		if err != nil {
 			log.Error().Err(err).Msg("Interactive mode failed")

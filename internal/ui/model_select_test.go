@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	tea "github.com/charmbracelet/bubbletea"
-	"github.com/tmeurs/continueplz/internal/models"
+	"github.com/tmeurs/spinup/internal/models"
 )
 
 func TestNewModelSelectModel(t *testing.T) {

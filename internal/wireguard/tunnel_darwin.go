@@ -19,7 +19,7 @@ import (
 
 // TunnelConfig holds the configuration needed to set up a WireGuard tunnel.
 type TunnelConfig struct {
-	// InterfaceName is the name of the WireGuard interface (default: "wg-continueplz").
+	// InterfaceName is the name of the WireGuard interface (default: "wg-spinup").
 	// On macOS, this is typically a utun interface (e.g., utun5).
 	InterfaceName string
 	// ClientPrivateKey is the base64-encoded private key for the local machine.

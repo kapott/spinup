@@ -89,7 +89,7 @@ User invokes `/session-end` or indicates they're done for now.
 ```
 modified:   FEATURES.md
 modified:   MEMORY.md
-new file:   cmd/continueplz/main.go
+new file:   cmd/spinup/main.go
 new file:   internal/config/config.go
 ```
 

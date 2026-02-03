@@ -1,4 +1,4 @@
-// Package deploy provides deployment orchestration for continueplz.
+// Package deploy provides deployment orchestration for spinup.
 package deploy
 
 import (
@@ -9,12 +9,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/tmeurs/continueplz/internal/config"
-	"github.com/tmeurs/continueplz/internal/logging"
-	"github.com/tmeurs/continueplz/internal/models"
-	"github.com/tmeurs/continueplz/internal/provider"
-	"github.com/tmeurs/continueplz/internal/provider/registry"
-	"github.com/tmeurs/continueplz/internal/wireguard"
+	"github.com/tmeurs/spinup/internal/config"
+	"github.com/tmeurs/spinup/internal/logging"
+	"github.com/tmeurs/spinup/internal/models"
+	"github.com/tmeurs/spinup/internal/provider"
+	"github.com/tmeurs/spinup/internal/provider/registry"
+	"github.com/tmeurs/spinup/internal/wireguard"
 )
 
 // DeployStep represents a step in the deployment process.

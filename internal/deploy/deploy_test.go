@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/tmeurs/continueplz/internal/config"
-	"github.com/tmeurs/continueplz/internal/provider"
+	"github.com/tmeurs/spinup/internal/config"
+	"github.com/tmeurs/spinup/internal/provider"
 )
 
 func TestDefaultDeployConfig(t *testing.T) {

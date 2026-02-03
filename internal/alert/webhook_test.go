@@ -47,8 +47,8 @@ func TestWebhookClient_SendAlert(t *testing.T) {
 		if r.Header.Get("Content-Type") != "application/json" {
 			t.Errorf("expected Content-Type application/json, got %s", r.Header.Get("Content-Type"))
 		}
-		if r.Header.Get("User-Agent") != "continueplz/1.0" {
-			t.Errorf("expected User-Agent continueplz/1.0, got %s", r.Header.Get("User-Agent"))
+		if r.Header.Get("User-Agent") != "spinup/1.0" {
+			t.Errorf("expected User-Agent spinup/1.0, got %s", r.Header.Get("User-Agent"))
 		}
 
 		err := json.NewDecoder(r.Body).Decode(&receivedPayload)

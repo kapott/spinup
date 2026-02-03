@@ -1,4 +1,4 @@
-# Product Requirements Document: continueplz
+# Product Requirements Document: spinup
 
 **Version:** 1.0
 **Author:** Claude (voor Claude Code implementatie)
@@ -9,7 +9,7 @@
 
 ## 1. Executive Summary
 
-**continueplz** is een command-line tool geschreven in Go die ontwikkelaars in staat stelt om met één commando een beveiligde, ephemeral GPU-instance op te spinnen met een code-assist LLM. De tool vergelijkt real-time prijzen van meerdere cloud GPU providers, deploy het gekozen model, zet een WireGuard tunnel op voor veilige connectie, en ruimt alles gegarandeerd op wanneer gewenst.
+**spinup** is een command-line tool geschreven in Go die ontwikkelaars in staat stelt om met één commando een beveiligde, ephemeral GPU-instance op te spinnen met een code-assist LLM. De tool vergelijkt real-time prijzen van meerdere cloud GPU providers, deploy het gekozen model, zet een WireGuard tunnel op voor veilige connectie, en ruimt alles gegarandeerd op wanneer gewenst.
 
 ### Kernprincipes
 
@@ -30,7 +30,7 @@ Als developer
 Wil ik met één commando de goedkoopste GPU-instance starten met mijn gewenste model
 Zodat ik direct aan de slag kan zonder prijzen te vergelijken
 ```
-Acceptance: `continueplz --cheapest --model=qwen2.5-coder:32b` start instance en geeft IP terug
+Acceptance: `spinup --cheapest --model=qwen2.5-coder:32b` start instance en geeft IP terug
 
 **US-2: Interactieve Provider/Model Selectie**
 ```
@@ -38,7 +38,7 @@ Als developer
 Wil ik een overzichtelijk menu zien met prijzen en modellen
 Zodat ik een geïnformeerde keuze kan maken
 ```
-Acceptance: `continueplz` zonder args toont TUI met provider/model selectie
+Acceptance: `spinup` zonder args toont TUI met provider/model selectie
 
 **US-3: Gegarandeerd Stoppen**
 ```
@@ -46,7 +46,7 @@ Als developer
 Wil ik zeker weten dat mijn instance stopt en billing eindigt
 Zodat ik geen onverwachte kosten krijg
 ```
-Acceptance: `continueplz` (als instance draait) stopt alles, bevestigt dat billing gestopt is
+Acceptance: `spinup` (als instance draait) stopt alles, bevestigt dat billing gestopt is
 
 **US-4: Cronjob Automation**
 ```
@@ -62,7 +62,7 @@ Als nieuwe gebruiker
 Wil ik een guided setup voor API keys en voorkeuren
 Zodat ik snel aan de slag kan
 ```
-Acceptance: `continueplz init` begeleidt door credential setup
+Acceptance: `spinup init` begeleidt door credential setup
 
 ---
 
@@ -90,15 +90,15 @@ De tool MOET de volgende providers ondersteunen:
 
 ### 3.2 Commands
 
-#### `continueplz init`
+#### `spinup init`
 
 Interactieve setup wizard:
 
 ```
-$ continueplz init
+$ spinup init
 
 ╭─────────────────────────────────────────────────────────╮
-│                   continueplz setup                      │
+│                   spinup setup                      │
 ╰─────────────────────────────────────────────────────────╯
 
 Let's configure your GPU providers.
@@ -132,18 +132,18 @@ Let's configure your GPU providers.
 ✓ Configuration saved to .env
 ✓ State file initialized
 
-Run 'continueplz' to start your first instance!
+Run 'spinup' to start your first instance!
 ```
 
 **Output:** Creëert `.env` bestand en initialiseert state.
 
-#### `continueplz` (geen args, geen actieve instance)
+#### `spinup` (geen args, geen actieve instance)
 
 Toont interactieve TUI:
 
 ```
 ╭─────────────────────────────────────────────────────────────────────────────╮
-│                              continueplz                                     │
+│                              spinup                                     │
 │                         GPU Code Assistant Launcher                          │
 ╰─────────────────────────────────────────────────────────────────────────────╯
 
@@ -188,13 +188,13 @@ Toont interactieve TUI:
                     [Enter] Deploy    [r] Refresh Prices    [q] Quit
 ```
 
-#### `continueplz` (geen args, instance actief)
+#### `spinup` (geen args, instance actief)
 
 Als er een actieve instance is:
 
 ```
 ╭─────────────────────────────────────────────────────────────────────────────╮
-│                              continueplz                                     │
+│                              spinup                                     │
 │                            Instance Active                                   │
 ╰─────────────────────────────────────────────────────────────────────────────╯
 
@@ -287,14 +287,14 @@ Session duration: 4h 28m
 Press any key to exit...
 ```
 
-#### `continueplz --cheapest --model=<model>`
+#### `spinup --cheapest --model=<model>`
 
 Non-interactive deployment:
 
 ```
-$ continueplz --cheapest --model=qwen2.5-coder:32b
+$ spinup --cheapest --model=qwen2.5-coder:32b
 
-continueplz v1.0.0 - Starting deployment
+spinup v1.0.0 - Starting deployment
 
 [1/8] Fetching prices from 5 providers...
       ✓ vast.ai: 3 offers
@@ -339,22 +339,22 @@ continueplz v1.0.0 - Starting deployment
   
   Cost:        €0.65/hr (€5.20/8hr day)
   
-  Stop with:   continueplz --stop
-               or: continueplz (interactive)
+  Stop with:   spinup --stop
+               or: spinup (interactive)
 
 ═══════════════════════════════════════════════════════════════════════════════
 ```
 
 **Exit code:** 0 on success, non-zero on failure
 
-#### `continueplz --stop`
+#### `spinup --stop`
 
 Non-interactive stop:
 
 ```
-$ continueplz --stop
+$ spinup --stop
 
-continueplz v1.0.0 - Stopping instance
+spinup v1.0.0 - Stopping instance
 
 [1/4] Terminating instance 12345678...
       ✓ Terminated
@@ -374,12 +374,12 @@ Duration: 4h 28m
 
 **Exit code:** 0 on success, 1 on failure (met ERROR in log)
 
-#### `continueplz status`
+#### `spinup status`
 
 ```
-$ continueplz status
+$ spinup status
 
-continueplz v1.0.0 - Status
+spinup v1.0.0 - Status
 
 Instance:     ● Active
 Provider:     vast.ai
@@ -395,7 +395,7 @@ Deadman:      5h 32m remaining
 Instance:     ○ None active
 ```
 
-#### `continueplz --output=json`
+#### `spinup --output=json`
 
 Alle commands ondersteunen JSON output:
 
@@ -430,11 +430,11 @@ Alle commands ondersteunen JSON output:
 ### 3.3 CLI Flags (Volledig)
 
 ```
-continueplz - Ephemeral GPU Code Assistant
+spinup - Ephemeral GPU Code Assistant
 
 Usage:
-  continueplz [flags]
-  continueplz [command]
+  spinup [flags]
+  spinup [command]
 
 Commands:
   init        Configure providers and generate .env
@@ -458,11 +458,11 @@ Flags:
   --help, -h              Show help
 
 Examples:
-  continueplz                                    # Interactive TUI
-  continueplz --cheapest --model=qwen2.5-coder:32b
-  continueplz --provider=lambda --gpu=a100-80 --model=codellama:70b
-  continueplz --stop
-  continueplz status --output=json
+  spinup                                    # Interactive TUI
+  spinup --cheapest --model=qwen2.5-coder:32b
+  spinup --provider=lambda --gpu=a100-80 --model=codellama:70b
+  spinup --stop
+  spinup status --output=json
 ```
 
 ### 3.4 Model Registry
@@ -516,7 +516,7 @@ var GPURegistry = []GPU{
 **WireGuard configuratie op instance (cloud-init):**
 
 ```yaml
-# Gegenereerd door continueplz
+# Gegenereerd door spinup
 wireguard:
   interfaces:
     wg0:
@@ -556,8 +556,8 @@ Instance MOET alleen accepteren:
 `.env` bestand:
 
 ```bash
-# continueplz configuration
-# Generated by: continueplz init
+# spinup configuration
+# Generated by: spinup init
 # Date: 2026-02-02
 
 # Provider API Keys
@@ -597,7 +597,7 @@ File permissions MOETEN 0600 zijn.
 # deadman.sh - Runs on instance
 
 TIMEOUT_SECONDS=${DEADMAN_TIMEOUT:-36000}  # 10 hours default
-HEARTBEAT_FILE=/tmp/continueplz-heartbeat
+HEARTBEAT_FILE=/tmp/spinup-heartbeat
 
 # Create initial heartbeat
 touch $HEARTBEAT_FILE
@@ -721,7 +721,7 @@ Bij `[r]`: Terug naar provider/model selectie scherm.
 
 ### 6.1 State File
 
-Locatie: `.continueplz.state` (zelfde directory als binary)
+Locatie: `.spinup.state` (zelfde directory als binary)
 
 ```json
 {
@@ -742,7 +742,7 @@ Locatie: `.continueplz.state` (zelfde directory als binary)
   },
   "wireguard": {
     "server_public_key": "xxxx",
-    "interface_name": "wg-continueplz"
+    "interface_name": "wg-spinup"
   },
   "cost": {
     "hourly_rate": 0.65,
@@ -825,7 +825,7 @@ func (c *Client) reconcileState() error {
 
 ### 7.3 Log File
 
-Locatie: `continueplz.log` (zelfde directory als binary)
+Locatie: `spinup.log` (zelfde directory als binary)
 
 Rotatie: Nieuwe file per dag, keep 7 dagen.
 
@@ -877,7 +877,7 @@ Bij CRITICAL errors:
 │  2. Verify instance 12345678 is terminated                                  │
 │  3. If still running, terminate manually                                    │
 │                                                                              │
-│  Error details logged to: continueplz.log                                   │
+│  Error details logged to: spinup.log                                   │
 │                                                                              │
 ╰─────────────────────────────────────────────────────────────────────────────╯
 ```
@@ -891,9 +891,9 @@ De border MOET rood knipperen (ANSI escape codes).
 ### 9.1 Project Structure
 
 ```
-continueplz/
+spinup/
 ├── cmd/
-│   └── continueplz/
+│   └── spinup/
 │       └── main.go           # Entry point
 ├── internal/
 │   ├── config/
@@ -1002,7 +1002,7 @@ type Instance struct {
 
 ```go
 // go.mod
-module github.com/yourusername/continueplz
+module github.com/yourusername/spinup
 
 go 1.22
 
@@ -1025,7 +1025,7 @@ require (
 ### 10.1 .example.env
 
 ```bash
-# continueplz configuration
+# spinup configuration
 # Copy this file to .env and fill in your API keys
 #
 # Get your API keys from:
@@ -1061,7 +1061,7 @@ DAILY_BUDGET_EUR=20          # Warn if daily spend exceeds this
 
 ```yaml
 #cloud-config
-# Generated by continueplz - DO NOT EDIT
+# Generated by spinup - DO NOT EDIT
 
 package_update: true
 package_upgrade: false
@@ -1090,7 +1090,7 @@ write_files:
     content: |
       #!/bin/bash
       TIMEOUT_SECONDS={{ .Deadman.TimeoutSeconds }}
-      HEARTBEAT_FILE=/tmp/continueplz-heartbeat
+      HEARTBEAT_FILE=/tmp/spinup-heartbeat
       PROVIDER={{ .Provider }}
       INSTANCE_ID={{ .InstanceID }}
       
@@ -1125,7 +1125,7 @@ write_files:
       [Install]
       WantedBy=multi-user.target
 
-  - path: /etc/continueplz-instance
+  - path: /etc/spinup-instance
     content: |
       PROVIDER={{ .Provider }}
       INSTANCE_ID={{ .InstanceID }}
@@ -1170,7 +1170,7 @@ runcmd:
   - systemctl start deadman
   
   # Signal ready
-  - touch /tmp/continueplz-ready
+  - touch /tmp/spinup-ready
 ```
 
 ---
@@ -1194,9 +1194,9 @@ runcmd:
 
 ### 11.3 E2E Tests
 
-- `continueplz init` flow
-- `continueplz --cheapest --model=X` flow
-- `continueplz --stop` flow
+- `spinup init` flow
+- `spinup --cheapest --model=X` flow
+- `spinup --stop` flow
 - Spot interruption handling
 
 ---
@@ -1205,7 +1205,7 @@ runcmd:
 
 ### 12.1 MVP (v0.1.0)
 
-- [ ] `continueplz init` werkt
+- [ ] `spinup init` werkt
 - [ ] Vast.ai provider volledig werkend
 - [ ] Lambda Labs provider volledig werkend
 - [ ] TUI voor provider/model selectie

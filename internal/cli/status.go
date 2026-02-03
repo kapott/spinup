@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/spf13/cobra"
-	"github.com/tmeurs/continueplz/internal/config"
+	"github.com/tmeurs/spinup/internal/config"
 )
 
 // StatusOutput represents the JSON output structure for status command.
@@ -120,11 +120,11 @@ func printNoActiveInstance(outputFormat string) {
 	}
 
 	// Text format
-	fmt.Printf("continueplz %s - Status\n", Version)
+	fmt.Printf("spinup %s - Status\n", Version)
 	fmt.Println("")
 	fmt.Println("Instance:     ○ None active")
 	fmt.Println("")
-	fmt.Println("Run 'continueplz' to start a new instance.")
+	fmt.Println("Run 'spinup' to start a new instance.")
 }
 
 // printStatusJSON prints status in JSON format per PRD Section 3.2.
@@ -184,7 +184,7 @@ func printStatusJSON(state *config.State) {
 
 // printStatusText prints status in text format per PRD Section 3.2.
 func printStatusText(state *config.State) {
-	fmt.Printf("continueplz %s - Status\n", Version)
+	fmt.Printf("spinup %s - Status\n", Version)
 	fmt.Println("")
 
 	// Instance status

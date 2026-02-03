@@ -1,4 +1,4 @@
-// Package cli provides the Cobra CLI commands for continueplz.
+// Package cli provides the Cobra CLI commands for spinup.
 package cli
 
 import (
@@ -9,9 +9,9 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/tmeurs/continueplz/internal/config"
-	"github.com/tmeurs/continueplz/internal/deploy"
-	"github.com/tmeurs/continueplz/internal/logging"
+	"github.com/tmeurs/spinup/internal/config"
+	"github.com/tmeurs/spinup/internal/deploy"
+	"github.com/tmeurs/spinup/internal/logging"
 )
 
 // RunStop executes the --stop non-interactive stop flow.
@@ -36,7 +36,7 @@ func RunStop() error {
 
 	// Print header (skip in JSON mode)
 	if !jsonOutput {
-		fmt.Printf("\ncontinueplz %s - Stopping instance\n\n", Version)
+		fmt.Printf("\nspinup %s - Stopping instance\n\n", Version)
 	}
 
 	// Set up context with cancellation on SIGINT/SIGTERM

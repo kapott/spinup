@@ -1,4 +1,4 @@
-// Package alert provides alerting functionality for continueplz.
+// Package alert provides alerting functionality for spinup.
 // This file implements budget warning functionality.
 package alert
 
@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/tmeurs/continueplz/internal/logging"
+	"github.com/tmeurs/spinup/internal/logging"
 )
 
 // BudgetThreshold represents a budget threshold level.

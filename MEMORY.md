@@ -16,9 +16,9 @@
 
 ## Project Overview
 
-**Project**: continueplz
+**Project**: spinup
 **Description**: CLI tool in Go for spinning up ephemeral GPU instances with code-assist LLMs
-**PRD Location**: `continueplz-prd.md`
+**PRD Location**: `spinup-prd.md`
 **Feature List**: `FEATURES.md`
 
 ---
@@ -61,13 +61,13 @@
 **Work Done**:
 - Verified go.mod already existed with correct module name
 - Created full directory structure per PRD Section 9.1:
-  - cmd/continueplz/
+  - cmd/spinup/
   - internal/{config,provider,models,wireguard,deploy,ui,alert,logging}/
   - internal/provider/{vast,lambda,runpod,coreweave,paperspace,mock}/
   - pkg/api/
   - templates/
   - tests/{integration,e2e}/
-- Created cmd/continueplz/main.go with:
+- Created cmd/spinup/main.go with:
   - --version flag showing version, commit, build date
   - --help flag with all CLI flags from PRD
   - Build-time version injection via ldflags
@@ -78,13 +78,13 @@
 - Created .example.env from PRD template
 
 **Files Created**:
-- cmd/continueplz/main.go
+- cmd/spinup/main.go
 - Makefile
 - .example.env
 
 **Acceptance Criteria Verified**:
-- ✅ `go build ./cmd/continueplz` succeeds
-- ✅ `./continueplz --version` outputs version string
+- ✅ `go build ./cmd/spinup` succeeds
+- ✅ `./spinup --version` outputs version string
 - ✅ Directory structure matches PRD Section 9.1
 
 **Skills Created**:
@@ -118,7 +118,7 @@
   - init.go - Init subcommand stub for configuration wizard
   - status.go - Status subcommand stub for instance status
   - version.go - Version subcommand
-- Updated cmd/continueplz/main.go to use Cobra CLI
+- Updated cmd/spinup/main.go to use Cobra CLI
 - Implemented all flags from PRD:
   - --cheapest, --provider, --gpu, --model, --tier
   - --spot, --on-demand, --region, --stop
@@ -132,14 +132,14 @@
 - internal/cli/version.go
 
 **Files Modified**:
-- cmd/continueplz/main.go
+- cmd/spinup/main.go
 - go.mod (added cobra dependency)
 - go.sum (auto-updated)
 
 **Acceptance Criteria Verified**:
-- ✅ `continueplz --help` shows all flags from PRD
-- ✅ `continueplz init --help` works
-- ✅ `continueplz status --help` works
+- ✅ `spinup --help` shows all flags from PRD
+- ✅ `spinup init --help` works
+- ✅ `spinup status --help` works
 - ✅ `go build ./...` succeeds
 
 ### Session 4 - 2026-02-02
@@ -170,7 +170,7 @@
 - go.sum (auto-updated)
 
 **Acceptance Criteria Verified**:
-- ✅ Logs write to `continueplz.log`
+- ✅ Logs write to `spinup.log`
 - ✅ Log format matches PRD Section 7.2 (timestamp LEVEL message key=value)
 - ✅ `-v` shows INFO+ to stderr
 - ✅ `-vv` shows DEBUG+ to stderr
@@ -237,7 +237,7 @@
 - go.sum (auto-updated after go mod tidy)
 
 **Acceptance Criteria Verified**:
-- ✅ State saves to `.continueplz.state`
+- ✅ State saves to `.spinup.state`
 - ✅ State JSON matches PRD Section 6.1 format
 - ✅ Corrupt state file handled gracefully (returns ErrStateCorrupt with wrapped error)
 - ✅ `go build ./...` succeeds
@@ -660,7 +660,7 @@
   - Supports SSH public key injection
   - Supports spot and on-demand instances
   - Configurable disk size (default 100GB)
-  - Adds labels for tracking (app: continueplz, managed-by: continueplz)
+  - Adds labels for tracking (app: spinup, managed-by: spinup)
 - Implemented GetInstance():
   - Uses GET /instances/{id} endpoint
   - Maps CoreWeave status (running, pending, stopping, stopped, terminated, error) to InstanceStatus
@@ -931,7 +931,7 @@
 - go.mod, go.sum (dependencies updated via go mod tidy)
 
 **Acceptance Criteria Verified**:
-- ✅ Tunnel interface created (`wg-continueplz` - uses InterfaceName constant)
+- ✅ Tunnel interface created (`wg-spinup` - uses InterfaceName constant)
 - ✅ Routes configured correctly (addRoute function adds route to ServerAllowedIPs)
 - ✅ Works without requiring manual sudo (checkRootOrSudo handles passwordless sudo)
 - ✅ `go build ./...` succeeds
@@ -994,7 +994,7 @@
 **Notes**:
 - Phase 4 (WireGuard) now at 4/6 features (67%)
 - macOS uses wireguard-go (userspace) instead of kernel WireGuard module
-- Interface names are utun* (e.g., utun5) instead of wg-continueplz
+- Interface names are utun* (e.g., utun5) instead of wg-spinup
 - Uses ifconfig and route commands instead of Linux ip command
 - Configuration applied via wg setconf tool rather than wgctrl library
 - wireguard-go creates a socket file in /var/run/wireguard/ for control
@@ -1117,14 +1117,14 @@
     - CoreWeave: DELETE to /instances/{id} with Bearer token
     - Paperspace: POST to /destroyMachine with x-api-key header
   - Deadman systemd service configuration
-  - Instance metadata file at /etc/continueplz-instance
+  - Instance metadata file at /etc/spinup-instance
   - Firewall rules (ufw):
     - Allow WireGuard UDP 51820 from anywhere
     - Allow Ollama 11434 and SSH 22 only via WireGuard interface (wg0)
   - Docker setup with NVIDIA Container Toolkit
   - Ollama container running on WireGuard IP (10.13.37.1:11434)
   - Model pull command
-  - Ready signal (/tmp/continueplz-ready)
+  - Ready signal (/tmp/spinup-ready)
 - Created internal/deploy/cloudinit_test.go with 20 comprehensive tests:
   - TestNewCloudInitParams - default values
   - TestCloudInitParams_Validate - validation for all required fields
@@ -1169,7 +1169,7 @@
 - Created internal/deploy/deadman.go with comprehensive deadman switch logic:
   - DeadmanConfig struct for deadman switch configuration:
     - TimeoutSeconds (default 36000 = 10 hours)
-    - HeartbeatFile path (default /tmp/continueplz-heartbeat)
+    - HeartbeatFile path (default /tmp/spinup-heartbeat)
     - CheckIntervalSeconds (default 60)
   - DeadmanStatus struct for tracking deadman state:
     - Active, TimeoutSeconds, RemainingSeconds, LastHeartbeat
@@ -1281,7 +1281,7 @@
 
 **Acceptance Criteria Verified**:
 - ✅ Heartbeat sent every 5 minutes (DefaultHeartbeatInterval = 5*time.Minute)
-- ✅ Heartbeat updates `/tmp/continueplz-heartbeat` on instance (via HTTP endpoint)
+- ✅ Heartbeat updates `/tmp/spinup-heartbeat` on instance (via HTTP endpoint)
 - ✅ Failures logged but don't crash client (OnFailure callback, consecutive failure tracking)
 - ✅ `go build ./...` succeeds
 - ✅ `go test ./...` passes (all 68 tests pass in deploy package)
@@ -2106,7 +2106,7 @@
     - Confirm with Enter (only when at least one provider selected)
     - Quit with 'q' or Ctrl+C
     - Visual matches PRD Section 3.2 layout with:
-      - Boxed header "continueplz setup"
+      - Boxed header "spinup setup"
       - Question "Which providers do you want to configure?"
       - Cursor indicator (>) for current item
       - Checkbox [x]/[ ] for selection state
@@ -2337,7 +2337,7 @@
 - Interactive mode orchestrates the full flow: provider select → model select → deploy
 - Uses existing TUI components (ProviderSelectModel, ModelSelectModel, DeployProgressModel)
 - Keyboard shortcuts implemented: q=quit, esc=back, ↑↓=navigate, Enter=select, r=refresh
-- When an instance is already running, user is directed to use 'continueplz status' instead
+- When an instance is already running, user is directed to use 'spinup status' instead
 - Next feature: F043 (Interactive Mode - Instance Active)
 
 ### Session 44 - 2026-02-02
@@ -2381,7 +2381,7 @@
   - RunActiveInstanceMode() entry point for the TUI
 - Updated internal/cli/interactive.go:
   - Modified CheckAndRunInteractive() to call RunActiveInstanceMode() when instance exists
-  - Now shows status view instead of just a message about using 'continueplz status'
+  - Now shows status view instead of just a message about using 'spinup status'
 - Updated internal/cli/root.go:
   - Removed redundant message about active instance since status is shown directly
 
@@ -2523,7 +2523,7 @@
 
 **Acceptance Criteria Verified**:
 - ✅ Shows instance info when active (tested with state struct fields)
-- ✅ Shows "None active" when no instance (tested: `./continueplz status`)
+- ✅ Shows "None active" when no instance (tested: `./spinup status`)
 - ✅ Format matches PRD Section 3.2 (text and JSON output)
 - ✅ `go build ./...` succeeds
 - ✅ `go test ./...` passes
@@ -3408,7 +3408,7 @@ None yet
 - `CLAUDE.md` - Project instructions for Claude Code (read automatically)
 - `FEATURES.md` - Feature breakdown and progress tracking
 - `MEMORY.md` - This file
-- `continueplz-prd.md` - Original PRD (pre-existing)
+- `spinup-prd.md` - Original PRD (pre-existing)
 - `.gitignore` - Git ignore rules
 - `.claude/settings.json` - Skill registration
 - `.claude/skills/` - 14 skill definition files:
@@ -3427,7 +3427,7 @@ None yet
   - `implement-one-feature.sh` - Run Claude to implement one feature
   - `implement-all-features.sh` - Loop to implement all features
   - `check-progress.sh` - Show progress status
-- `cmd/continueplz/main.go` - Entry point with version/help flags
+- `cmd/spinup/main.go` - Entry point with version/help flags
 - `Makefile` - Build targets for all platforms
 - `.example.env` - Environment template from PRD
 - `internal/cli/root.go` - Cobra root command with all flags
@@ -3482,10 +3482,10 @@ None yet
 ## Important Paths and Locations
 
 ```
-/Users/therder/Documents/Git/tmeurs/continueplz/
+/Users/therder/Documents/Git/tmeurs/spinup/
 ├── FEATURES.md          # Feature tracking
 ├── MEMORY.md            # This memory file
-├── continueplz-prd.md   # PRD specification
+├── spinup-prd.md   # PRD specification
 └── (code to be added)
 ```
 

@@ -1,4 +1,4 @@
-// Package config provides configuration and state management for continueplz.
+// Package config provides configuration and state management for spinup.
 package config
 
 import (

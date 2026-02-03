@@ -1,4 +1,4 @@
-// Package ui provides the TUI (Terminal User Interface) for continueplz.
+// Package ui provides the TUI (Terminal User Interface) for spinup.
 package ui
 
 import (
@@ -7,8 +7,8 @@ import (
 
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
-	"github.com/tmeurs/continueplz/internal/models"
-	"github.com/tmeurs/continueplz/internal/provider"
+	"github.com/tmeurs/spinup/internal/models"
+	"github.com/tmeurs/spinup/internal/provider"
 )
 
 // DefaultStorageGB is the default disk size used for cost calculations.

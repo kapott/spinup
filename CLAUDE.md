@@ -1,16 +1,16 @@
 # CLAUDE.md - Instructions for Claude Code
 
-> This file contains project-specific instructions for Claude Code sessions working on continueplz.
+> This file contains project-specific instructions for Claude Code sessions working on spinup.
 
 ## Project Overview
 
-**continueplz** is a CLI tool written in Go that spins up ephemeral GPU instances with code-assist LLMs. It compares prices across cloud GPU providers, deploys models via Ollama, sets up WireGuard tunnels, and guarantees cleanup.
+**spinup** is a CLI tool written in Go that spins up ephemeral GPU instances with code-assist LLMs. It compares prices across cloud GPU providers, deploys models via Ollama, sets up WireGuard tunnels, and guarantees cleanup.
 
 ## Critical Files to Read First
 
 1. **MEMORY.md** - Current project state, what was done, what's next
 2. **FEATURES.md** - Complete feature breakdown with status tracking
-3. **continueplz-prd.md** - Full product requirements (reference as needed)
+3. **spinup-prd.md** - Full product requirements (reference as needed)
 
 ## Session Workflow
 
@@ -71,7 +71,7 @@ Or use: `/session-end`
 
 ### Project Structure
 ```
-cmd/continueplz/     - Entry point
+cmd/spinup/     - Entry point
 internal/
   config/            - Configuration and state
   provider/          - Cloud provider implementations
@@ -126,7 +126,7 @@ Features are numbered F001-F064. Always:
 ## Important Reminders
 
 - **Never commit .env** - Contains API keys
-- **Never commit .continueplz.state** - Contains instance data
+- **Never commit .spinup.state** - Contains instance data
 - **PRD is in Dutch** - Code and comments should be in English
 - **Paperspace has no billing API** - Requires manual verification flow
 - **WireGuard differs by OS** - Separate implementations for Linux/macOS
@@ -136,7 +136,7 @@ Features are numbered F001-F064. Always:
 
 ```bash
 # Build
-go build ./cmd/continueplz
+go build ./cmd/spinup
 
 # Test all
 go test ./...

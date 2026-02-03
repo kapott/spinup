@@ -1,6 +1,6 @@
-# continueplz Feature Breakdown
+# spinup Feature Breakdown
 
-> **Purpose**: This document breaks down the continueplz project into small, atomic features that can each be completed in a single Claude Code context window. Each feature has clear acceptance criteria and dependencies.
+> **Purpose**: This document breaks down the spinup project into small, atomic features that can each be completed in a single Claude Code context window. Each feature has clear acceptance criteria and dependencies.
 
 ## Status Legend
 
@@ -21,10 +21,10 @@
 **Description**: Create the basic Go module and directory structure as specified in the PRD.
 
 **Tasks**:
-1. Initialize Go module with `go mod init github.com/tmeurs/continueplz`
+1. Initialize Go module with `go mod init github.com/tmeurs/spinup`
 2. Create directory structure:
    ```
-   cmd/continueplz/
+   cmd/spinup/
    internal/config/
    internal/provider/
    internal/models/
@@ -41,8 +41,8 @@
 5. Create `.example.env` from PRD template
 
 **Acceptance Criteria**:
-- [x] `go build ./cmd/continueplz` succeeds
-- [x] `./continueplz --version` outputs version string
+- [x] `go build ./cmd/spinup` succeeds
+- [x] `./spinup --version` outputs version string
 - [x] Directory structure matches PRD Section 9.1
 
 ---
@@ -61,9 +61,9 @@
 4. Wire up `--version`, `--help` flags
 
 **Acceptance Criteria**:
-- [x] `continueplz --help` shows all flags from PRD
-- [x] `continueplz init --help` works
-- [x] `continueplz status --help` works
+- [x] `spinup --help` shows all flags from PRD
+- [x] `spinup init --help` works
+- [x] `spinup status --help` works
 
 ---
 
@@ -82,7 +82,7 @@
 5. Wire up `-v` and `-vv` flags for verbose output
 
 **Acceptance Criteria**:
-- [x] Logs write to `continueplz.log`
+- [x] Logs write to `spinup.log`
 - [x] Log format matches PRD Section 7.2
 - [x] `-v` shows INFO+ to stderr
 - [x] `-vv` shows DEBUG+ to stderr
@@ -126,7 +126,7 @@
 5. Handle missing/corrupt state file gracefully
 
 **Acceptance Criteria**:
-- [x] State saves to `.continueplz.state`
+- [x] State saves to `.spinup.state`
 - [x] State JSON matches PRD Section 6.1 format
 - [x] Corrupt state file handled gracefully with warning
 
@@ -432,7 +432,7 @@
 4. Handle sudo/root requirements gracefully
 
 **Acceptance Criteria**:
-- [x] Tunnel interface created (`wg-continueplz`)
+- [x] Tunnel interface created (`wg-spinup`)
 - [x] Routes configured correctly
 - [x] Works without requiring manual sudo
 
@@ -554,7 +554,7 @@
 
 **Acceptance Criteria**:
 - [x] Heartbeat sent every 5 minutes
-- [x] Heartbeat updates `/tmp/continueplz-heartbeat` on instance
+- [x] Heartbeat updates `/tmp/spinup-heartbeat` on instance
 - [x] Failures logged but don't crash client
 
 ---

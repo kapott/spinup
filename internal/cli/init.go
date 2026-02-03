@@ -10,7 +10,7 @@ import (
 var initCmd = &cobra.Command{
 	Use:   "init",
 	Short: "Configure providers and generate .env",
-	Long: `Initialize continueplz configuration.
+	Long: `Initialize spinup configuration.
 
 This interactive setup wizard will guide you through:
 - Selecting which cloud GPU providers to configure
@@ -20,7 +20,7 @@ This interactive setup wizard will guide you through:
 
 The configuration will be saved to a .env file in the current directory.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("continueplz init - Configuration wizard")
+		fmt.Println("spinup init - Configuration wizard")
 		fmt.Println("")
 		fmt.Println("Interactive setup coming soon!")
 		fmt.Println("")

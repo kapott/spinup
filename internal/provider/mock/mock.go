@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/tmeurs/continueplz/internal/provider"
+	"github.com/tmeurs/spinup/internal/provider"
 )
 
 // Provider is a mock implementation of the provider.Provider interface.

@@ -5,13 +5,13 @@ package registry
 import (
 	"fmt"
 
-	"github.com/tmeurs/continueplz/internal/config"
-	"github.com/tmeurs/continueplz/internal/provider"
-	"github.com/tmeurs/continueplz/internal/provider/coreweave"
-	"github.com/tmeurs/continueplz/internal/provider/lambda"
-	"github.com/tmeurs/continueplz/internal/provider/paperspace"
-	"github.com/tmeurs/continueplz/internal/provider/runpod"
-	"github.com/tmeurs/continueplz/internal/provider/vast"
+	"github.com/tmeurs/spinup/internal/config"
+	"github.com/tmeurs/spinup/internal/provider"
+	"github.com/tmeurs/spinup/internal/provider/coreweave"
+	"github.com/tmeurs/spinup/internal/provider/lambda"
+	"github.com/tmeurs/spinup/internal/provider/paperspace"
+	"github.com/tmeurs/spinup/internal/provider/runpod"
+	"github.com/tmeurs/spinup/internal/provider/vast"
 )
 
 // ProviderName constants for supported providers.

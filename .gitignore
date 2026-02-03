@@ -1,5 +1,5 @@
 # Binaries
-continueplz
+spinup
 build/
 dist/
 *.exe
@@ -21,11 +21,11 @@ coverage.html
 *.key
 
 # State files
-.continueplz.state
+.spinup.state
 
 # Logs
 *.log
-continueplz.log
+spinup.log
 logs/
 
 # IDE

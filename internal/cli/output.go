@@ -1,4 +1,4 @@
-// Package cli provides the Cobra CLI commands for continueplz.
+// Package cli provides the Cobra CLI commands for spinup.
 package cli
 
 import (

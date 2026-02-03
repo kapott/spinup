@@ -1,4 +1,4 @@
-// Package cli provides the Cobra CLI commands for continueplz.
+// Package cli provides the Cobra CLI commands for spinup.
 package cli
 
 import (
@@ -7,11 +7,11 @@ import (
 	"time"
 
 	tea "github.com/charmbracelet/bubbletea"
-	"github.com/tmeurs/continueplz/internal/config"
-	"github.com/tmeurs/continueplz/internal/deploy"
-	"github.com/tmeurs/continueplz/internal/logging"
-	"github.com/tmeurs/continueplz/internal/ui"
-	"github.com/tmeurs/continueplz/internal/wireguard"
+	"github.com/tmeurs/spinup/internal/config"
+	"github.com/tmeurs/spinup/internal/deploy"
+	"github.com/tmeurs/spinup/internal/logging"
+	"github.com/tmeurs/spinup/internal/ui"
+	"github.com/tmeurs/spinup/internal/wireguard"
 )
 
 // ActiveInstanceModel is the main model for interactive mode when an instance is running.
@@ -216,7 +216,7 @@ func (m ActiveInstanceModel) handleKeyPress(msg tea.KeyMsg) (tea.Model, tea.Cmd)
 
 	case "l", "L":
 		// Show logs - for now just update status message
-		m.SetStatusMessage("Log viewing not yet implemented - check ~/.continueplz.log")
+		m.SetStatusMessage("Log viewing not yet implemented - check ~/.spinup.log")
 		return m, nil
 
 	case "?":
@@ -243,7 +243,7 @@ func (m ActiveInstanceModel) handleStatusAction(action ui.StatusAction) (tea.Mod
 			return m, func() tea.Msg { return testConnectionMsg{} }
 		}
 	case ui.StatusActionLogs:
-		m.SetStatusMessage("Log viewing not yet implemented - check ~/.continueplz.log")
+		m.SetStatusMessage("Log viewing not yet implemented - check ~/.spinup.log")
 	case ui.StatusActionQuit:
 		return m, tea.Quit
 	}

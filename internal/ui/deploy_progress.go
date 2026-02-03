@@ -1,4 +1,4 @@
-// Package ui provides TUI components for continueplz.
+// Package ui provides TUI components for spinup.
 package ui
 
 import (
@@ -9,7 +9,7 @@ import (
 	"github.com/charmbracelet/bubbles/spinner"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
-	"github.com/tmeurs/continueplz/internal/deploy"
+	"github.com/tmeurs/spinup/internal/deploy"
 )
 
 // DeployStepState represents the state of a deployment step.

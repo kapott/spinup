@@ -1,4 +1,4 @@
-// Package deploy provides deployment orchestration for continueplz.
+// Package deploy provides deployment orchestration for spinup.
 package deploy
 
 import (
@@ -7,9 +7,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/tmeurs/continueplz/internal/config"
-	"github.com/tmeurs/continueplz/internal/provider"
-	"github.com/tmeurs/continueplz/internal/provider/registry"
+	"github.com/tmeurs/spinup/internal/config"
+	"github.com/tmeurs/spinup/internal/provider"
+	"github.com/tmeurs/spinup/internal/provider/registry"
 )
 
 // ReconcileResult holds the result of state reconciliation.

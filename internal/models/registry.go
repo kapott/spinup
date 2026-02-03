@@ -1,4 +1,4 @@
-// Package models provides model and GPU registry for continueplz.
+// Package models provides model and GPU registry for spinup.
 package models
 
 import (

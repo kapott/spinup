@@ -1,4 +1,4 @@
-// Package cli provides the Cobra CLI commands for continueplz.
+// Package cli provides the Cobra CLI commands for spinup.
 package cli
 
 import (
@@ -9,9 +9,9 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/tmeurs/continueplz/internal/config"
-	"github.com/tmeurs/continueplz/internal/deploy"
-	"github.com/tmeurs/continueplz/internal/logging"
+	"github.com/tmeurs/spinup/internal/config"
+	"github.com/tmeurs/spinup/internal/deploy"
+	"github.com/tmeurs/spinup/internal/logging"
 )
 
 // RunCheapestDeploy executes the --cheapest non-interactive deployment flow.
@@ -30,7 +30,7 @@ func RunCheapestDeploy(modelName, providerName, gpuType, regionName string, pref
 
 	// Print header (skip in JSON mode)
 	if !jsonOutput {
-		fmt.Printf("\ncontinueplz %s - Starting deployment\n\n", Version)
+		fmt.Printf("\nspinup %s - Starting deployment\n\n", Version)
 	}
 
 	// Set up context with cancellation on SIGINT/SIGTERM
@@ -61,7 +61,7 @@ func RunCheapestDeploy(modelName, providerName, gpuType, regionName string, pref
 
 	// Validate that at least one provider is configured
 	if !cfg.HasAnyProvider() {
-		err := fmt.Errorf("no providers configured - run 'continueplz init' first or set API keys in .env")
+		err := fmt.Errorf("no providers configured - run 'spinup init' first or set API keys in .env")
 		if jsonOutput {
 			PrintJSONError(err)
 		}
@@ -199,7 +199,7 @@ func printDeploymentSummary(result *deploy.DeployResult) {
 	fmt.Printf("  Deployment took %s\n", formatDuration(result.Duration()))
 	fmt.Println()
 	fmt.Println("To stop the instance and cleanup:")
-	fmt.Println("  continueplz --stop")
+	fmt.Println("  spinup --stop")
 	fmt.Println()
 }
 

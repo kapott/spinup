@@ -1,4 +1,4 @@
-module github.com/tmeurs/continueplz
+module github.com/tmeurs/spinup
 
 go 1.25.1
 

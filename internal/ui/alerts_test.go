@@ -1,4 +1,4 @@
-// Package ui provides TUI components for continueplz.
+// Package ui provides TUI components for spinup.
 package ui
 
 import (
@@ -107,7 +107,7 @@ func TestNewCriticalAlert(t *testing.T) {
 }
 
 func TestNewBillingNotVerifiedAlert(t *testing.T) {
-	alert := NewBillingNotVerifiedAlert("12345678", "vast.ai", "https://console.vast.ai/", "continueplz.log")
+	alert := NewBillingNotVerifiedAlert("12345678", "vast.ai", "https://console.vast.ai/", "spinup.log")
 
 	if alert.Level != AlertLevelCritical {
 		t.Errorf("Level = %v, want %v", alert.Level, AlertLevelCritical)
@@ -121,8 +121,8 @@ func TestNewBillingNotVerifiedAlert(t *testing.T) {
 	if alert.ConsoleURL != "https://console.vast.ai/" {
 		t.Errorf("ConsoleURL = %v, want %v", alert.ConsoleURL, "https://console.vast.ai/")
 	}
-	if alert.LogFile != "continueplz.log" {
-		t.Errorf("LogFile = %v, want %v", alert.LogFile, "continueplz.log")
+	if alert.LogFile != "spinup.log" {
+		t.Errorf("LogFile = %v, want %v", alert.LogFile, "spinup.log")
 	}
 	if len(alert.Actions) != 4 {
 		t.Errorf("Expected 4 actions, got %d", len(alert.Actions))
@@ -256,7 +256,7 @@ func TestAlertModel_View_ErrorAlert(t *testing.T) {
 }
 
 func TestAlertModel_View_CriticalAlert(t *testing.T) {
-	alert := NewBillingNotVerifiedAlert("12345678", "vast.ai", "https://console.vast.ai/", "continueplz.log")
+	alert := NewBillingNotVerifiedAlert("12345678", "vast.ai", "https://console.vast.ai/", "spinup.log")
 	m := NewAlertModelWithAlert(alert)
 	m.width = 80
 	m.height = 24
@@ -275,7 +275,7 @@ func TestAlertModel_View_CriticalAlert(t *testing.T) {
 	if !strings.Contains(view, "https://console.vast.ai/") {
 		t.Error("Expected view to contain console URL")
 	}
-	if !strings.Contains(view, "continueplz.log") {
+	if !strings.Contains(view, "spinup.log") {
 		t.Error("Expected view to contain log file")
 	}
 }
@@ -440,7 +440,7 @@ func TestRenderAlertInline(t *testing.T) {
 }
 
 func TestRenderCriticalAlertRaw(t *testing.T) {
-	alert := NewBillingNotVerifiedAlert("12345678", "vast.ai", "https://console.vast.ai/", "continueplz.log")
+	alert := NewBillingNotVerifiedAlert("12345678", "vast.ai", "https://console.vast.ai/", "spinup.log")
 	rendered := RenderCriticalAlertRaw(alert)
 
 	// Check for ANSI escape codes

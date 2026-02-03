@@ -412,8 +412,8 @@ func TestDeadmanConstants(t *testing.T) {
 	if DefaultDeadmanTimeout != 10*time.Hour {
 		t.Errorf("expected DefaultDeadmanTimeout to be 10h, got %v", DefaultDeadmanTimeout)
 	}
-	if DefaultHeartbeatFile != "/tmp/continueplz-heartbeat" {
-		t.Errorf("expected DefaultHeartbeatFile to be /tmp/continueplz-heartbeat, got %s", DefaultHeartbeatFile)
+	if DefaultHeartbeatFile != "/tmp/spinup-heartbeat" {
+		t.Errorf("expected DefaultHeartbeatFile to be /tmp/spinup-heartbeat, got %s", DefaultHeartbeatFile)
 	}
 	if DefaultCheckInterval != 60*time.Second {
 		t.Errorf("expected DefaultCheckInterval to be 60s, got %v", DefaultCheckInterval)

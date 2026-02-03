@@ -1,4 +1,4 @@
-// Package logging provides structured logging for continueplz.
+// Package logging provides structured logging for spinup.
 // It uses zerolog for structured JSON logging and supports log rotation.
 package logging
 
@@ -29,13 +29,13 @@ type Config struct {
 	ConsoleOutput bool
 }
 
-// DefaultLogFile returns the default log file path (continueplz.log in current directory)
+// DefaultLogFile returns the default log file path (spinup.log in current directory)
 func DefaultLogFile() string {
 	exe, err := os.Executable()
 	if err != nil {
-		return "continueplz.log"
+		return "spinup.log"
 	}
-	return filepath.Join(filepath.Dir(exe), "continueplz.log")
+	return filepath.Join(filepath.Dir(exe), "spinup.log")
 }
 
 // levelFilterWriter wraps an io.Writer and filters based on log level

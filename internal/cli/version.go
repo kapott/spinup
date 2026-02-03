@@ -10,9 +10,9 @@ import (
 var versionCmd = &cobra.Command{
 	Use:   "version",
 	Short: "Show version information",
-	Long:  `Display the version, commit hash, and build date of continueplz.`,
+	Long:  `Display the version, commit hash, and build date of spinup.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Printf("continueplz %s (commit: %s, built: %s)\n", Version, Commit, Date)
+		fmt.Printf("spinup %s (commit: %s, built: %s)\n", Version, Commit, Date)
 	},
 }
 

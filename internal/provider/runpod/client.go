@@ -14,7 +14,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/tmeurs/continueplz/internal/provider"
+	"github.com/tmeurs/spinup/internal/provider"
 )
 
 const (
@@ -811,7 +811,7 @@ func (c *Client) CreateInstance(ctx context.Context, req provider.CreateRequest)
 		"volumeInGb":    req.DiskSizeGB,
 		"containerDiskInGb": 20,
 		"imageName":     "runpod/pytorch:latest", // Base image with CUDA support
-		"name":          "continueplz",
+		"name":          "spinup",
 	}
 
 	// Set default disk size if not specified

@@ -1,4 +1,4 @@
-// Package alert provides alerting functionality for continueplz.
+// Package alert provides alerting functionality for spinup.
 // This file implements the alert dispatcher which routes alerts to appropriate destinations
 // based on their severity level.
 package alert
@@ -8,7 +8,7 @@ import (
 	"sync"
 
 	tea "github.com/charmbracelet/bubbletea"
-	"github.com/tmeurs/continueplz/internal/logging"
+	"github.com/tmeurs/spinup/internal/logging"
 )
 
 // TUINotifier is the interface for sending alerts to the TUI.

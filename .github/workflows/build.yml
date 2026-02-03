@@ -46,8 +46,8 @@ jobs:
 
       - name: Test binary
         run: |
-          ./continueplz --version
-          ./continueplz --help
+          ./spinup --version
+          ./spinup --help
 
       - name: Run tests
         run: make test

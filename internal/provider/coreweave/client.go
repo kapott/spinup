@@ -14,7 +14,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/tmeurs/continueplz/internal/provider"
+	"github.com/tmeurs/spinup/internal/provider"
 )
 
 const (
@@ -616,14 +616,14 @@ func (c *Client) CreateInstance(ctx context.Context, req provider.CreateRequest)
 
 	// Build the create request
 	createReq := coreweaveCreateRequest{
-		Name:     fmt.Sprintf("continueplz-%d", time.Now().Unix()),
+		Name:     fmt.Sprintf("spinup-%d", time.Now().Unix()),
 		GPUType:  gpuType,
 		Region:   region,
 		Spot:     req.Spot,
 		GPUCount: 1,
 		Labels: map[string]string{
-			"app":        "continueplz",
-			"managed-by": "continueplz",
+			"app":        "spinup",
+			"managed-by": "spinup",
 		},
 	}
 

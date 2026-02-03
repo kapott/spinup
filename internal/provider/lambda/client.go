@@ -12,7 +12,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/tmeurs/continueplz/internal/provider"
+	"github.com/tmeurs/spinup/internal/provider"
 )
 
 const (
@@ -693,7 +693,7 @@ func (c *Client) CreateInstance(ctx context.Context, req provider.CreateRequest)
 		InstanceTypeName: instanceType,
 		SSHKeyNames:      []string{}, // TODO: Support SSH key registration
 		Quantity:         1,
-		Name:             "continueplz",
+		Name:             "spinup",
 	}
 
 	// If an SSH public key is provided, we'd need to register it first

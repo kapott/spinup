@@ -1,4 +1,4 @@
-// Package e2e provides end-to-end tests for the continueplz application.
+// Package e2e provides end-to-end tests for the spinup application.
 // These tests validate full workflows from user perspective.
 package e2e
 
@@ -6,11 +6,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/tmeurs/continueplz/internal/config"
-	"github.com/tmeurs/continueplz/internal/deploy"
-	"github.com/tmeurs/continueplz/internal/provider"
-	"github.com/tmeurs/continueplz/internal/provider/mock"
-	"github.com/tmeurs/continueplz/tests/integration"
+	"github.com/tmeurs/spinup/internal/config"
+	"github.com/tmeurs/spinup/internal/deploy"
+	"github.com/tmeurs/spinup/internal/provider"
+	"github.com/tmeurs/spinup/internal/provider/mock"
+	"github.com/tmeurs/spinup/tests/integration"
 )
 
 // TestFullDeployStopCycle tests the complete lifecycle:
@@ -90,7 +90,7 @@ func TestFullDeployStopCycle(t *testing.T) {
 			},
 			&config.WireGuardState{
 				ServerPublicKey: "test-server-pubkey",
-				InterfaceName:   "wg-continueplz",
+				InterfaceName:   "wg-spinup",
 			},
 			&config.CostState{
 				HourlyRate:  createdInstance.HourlyRate,

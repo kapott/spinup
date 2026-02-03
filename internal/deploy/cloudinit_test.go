@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/tmeurs/continueplz/internal/wireguard"
+	"github.com/tmeurs/spinup/internal/wireguard"
 )
 
 func TestNewCloudInitParams(t *testing.T) {
@@ -197,7 +197,7 @@ func TestGenerateCloudInit(t *testing.T) {
 	}
 
 	// Check ready signal
-	if !strings.Contains(result, "touch /tmp/continueplz-ready") {
+	if !strings.Contains(result, "touch /tmp/spinup-ready") {
 		t.Error("expected ready signal in output")
 	}
 }

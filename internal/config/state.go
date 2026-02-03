@@ -1,4 +1,4 @@
-// Package config provides configuration and state management for continueplz.
+// Package config provides configuration and state management for spinup.
 package config
 
 import (
@@ -13,7 +13,7 @@ import (
 
 const (
 	// StateFileName is the name of the state file.
-	StateFileName = ".continueplz.state"
+	StateFileName = ".spinup.state"
 
 	// StateVersion is the current version of the state file format.
 	StateVersion = 1
@@ -33,7 +33,7 @@ var (
 	stateMutex sync.Mutex
 )
 
-// State represents the complete state of a continueplz session.
+// State represents the complete state of a spinup session.
 // Matches PRD Section 6.1 format.
 type State struct {
 	Version   int             `json:"version"`

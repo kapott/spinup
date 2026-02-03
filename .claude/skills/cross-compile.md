@@ -1,6 +1,6 @@
 # cross-compile
 
-Build continueplz for all target platforms (Linux/macOS, amd64/arm64).
+Build spinup for all target platforms (Linux/macOS, amd64/arm64).
 
 ## Trigger
 User invokes `/cross-compile` or asks to build for multiple platforms.
@@ -42,16 +42,16 @@ User invokes `/cross-compile` or asks to build for multiple platforms.
    for platform in "${PLATFORMS[@]}"; do
        GOOS="${platform%/*}"
        GOARCH="${platform#*/}"
-       output="dist/continueplz-${VERSION}-${GOOS}-${GOARCH}"
+       output="dist/spinup-${VERSION}-${GOOS}-${GOARCH}"
 
        echo "Building ${GOOS}/${GOARCH}..."
-       GOOS=$GOOS GOARCH=$GOARCH go build -ldflags "$LDFLAGS" -o "$output" ./cmd/continueplz
+       GOOS=$GOOS GOARCH=$GOARCH go build -ldflags "$LDFLAGS" -o "$output" ./cmd/spinup
    done
    ```
 
 4. **Create checksums**:
    ```bash
-   cd dist && sha256sum continueplz-* > checksums.txt
+   cd dist && sha256sum spinup-* > checksums.txt
    ```
 
 5. **Verify builds**:
@@ -60,12 +60,12 @@ User invokes `/cross-compile` or asks to build for multiple platforms.
    ls -lh dist/
 
    # Verify native binary runs
-   ./dist/continueplz-*-$(go env GOOS)-$(go env GOARCH) --version
+   ./dist/spinup-*-$(go env GOOS)-$(go env GOARCH) --version
    ```
 
 6. **Create archives for release**:
    ```bash
-   for f in dist/continueplz-${VERSION}-*; do
+   for f in dist/spinup-${VERSION}-*; do
        if [[ "$f" != *.tar.gz ]] && [[ "$f" != *.zip ]]; then
            tar -czvf "${f}.tar.gz" -C dist "$(basename $f)"
        fi
@@ -91,19 +91,19 @@ User invokes `/cross-compile` or asks to build for multiple platforms.
 | darwin        | arm64        | 11.9 MB | OK     |
 
 ### Checksums (SHA256)
-abc123... continueplz-v1.0.0-linux-amd64
-def456... continueplz-v1.0.0-linux-arm64
+abc123... spinup-v1.0.0-linux-amd64
+def456... spinup-v1.0.0-linux-arm64
 ...
 
 ### Output Directory
 dist/
-├── continueplz-v1.0.0-linux-amd64
-├── continueplz-v1.0.0-linux-amd64.tar.gz
-├── continueplz-v1.0.0-linux-arm64
-├── continueplz-v1.0.0-linux-arm64.tar.gz
-├── continueplz-v1.0.0-darwin-amd64
-├── continueplz-v1.0.0-darwin-amd64.tar.gz
-├── continueplz-v1.0.0-darwin-arm64
-├── continueplz-v1.0.0-darwin-arm64.tar.gz
+├── spinup-v1.0.0-linux-amd64
+├── spinup-v1.0.0-linux-amd64.tar.gz
+├── spinup-v1.0.0-linux-arm64
+├── spinup-v1.0.0-linux-arm64.tar.gz
+├── spinup-v1.0.0-darwin-amd64
+├── spinup-v1.0.0-darwin-amd64.tar.gz
+├── spinup-v1.0.0-darwin-arm64
+├── spinup-v1.0.0-darwin-arm64.tar.gz
 └── checksums.txt
 ```

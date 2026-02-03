@@ -19,7 +19,7 @@ User invokes `/security-review` or asks for a security audit.
 
 3. **Review .gitignore**:
    - `.env` must be ignored
-   - `.continueplz.state` must be ignored
+   - `.spinup.state` must be ignored
    - `*.pem`, `*.key` should be ignored
    - Coverage files (`coverage.out`) should be ignored
 

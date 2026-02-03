@@ -1,4 +1,4 @@
-// Package ui provides TUI components for continueplz.
+// Package ui provides TUI components for spinup.
 package ui
 
 import (

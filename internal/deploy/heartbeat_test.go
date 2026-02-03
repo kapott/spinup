@@ -499,7 +499,7 @@ func TestGenerateHeartbeatServerScript(t *testing.T) {
 	if !strings.Contains(script, "51821") { // Default port
 		t.Error("expected default port in script")
 	}
-	if !strings.Contains(script, "/tmp/continueplz-heartbeat") {
+	if !strings.Contains(script, "/tmp/spinup-heartbeat") {
 		t.Error("expected default heartbeat file in script")
 	}
 
