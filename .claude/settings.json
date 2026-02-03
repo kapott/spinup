@@ -1,0 +1,60 @@
+{
+  "skills": {
+    "go-lint": {
+      "description": "Run Go linting and formatting, fixing issues automatically",
+      "file": "skills/go-lint.md"
+    },
+    "go-test": {
+      "description": "Run Go tests with coverage analysis",
+      "file": "skills/go-test.md"
+    },
+    "api-mock": {
+      "description": "Generate mock HTTP responses for provider APIs",
+      "file": "skills/api-mock.md"
+    },
+    "tui-scaffold": {
+      "description": "Generate Bubbletea TUI component boilerplate",
+      "file": "skills/tui-scaffold.md"
+    },
+    "wireguard-debug": {
+      "description": "Diagnose WireGuard tunnel issues",
+      "file": "skills/wireguard-debug.md"
+    },
+    "cloud-init-validate": {
+      "description": "Validate cloud-init YAML syntax",
+      "file": "skills/cloud-init-validate.md"
+    },
+    "retry-patterns": {
+      "description": "Generate retry logic with exponential backoff",
+      "file": "skills/retry-patterns.md"
+    },
+    "security-review": {
+      "description": "Scan for security vulnerabilities and credential leaks",
+      "file": "skills/security-review.md"
+    },
+    "cross-compile": {
+      "description": "Build for all target platforms",
+      "file": "skills/cross-compile.md"
+    },
+    "provider-api": {
+      "description": "Research and implement a cloud GPU provider API",
+      "file": "skills/provider-api.md"
+    },
+    "feature-implement": {
+      "description": "Implement a feature from FEATURES.md",
+      "file": "skills/feature-implement.md"
+    },
+    "godoc-gen": {
+      "description": "Generate Go documentation comments",
+      "file": "skills/godoc-gen.md"
+    },
+    "session-start": {
+      "description": "Initialize session by reading project state",
+      "file": "skills/session-start.md"
+    },
+    "session-end": {
+      "description": "Close session and update tracking files",
+      "file": "skills/session-end.md"
+    }
+  }
+}

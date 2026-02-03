@@ -1,0 +1,50 @@
+# Binaries
+continueplz
+build/
+dist/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool
+coverage.out
+coverage.html
+
+# Environment and secrets
+.env
+*.pem
+*.key
+
+# State files
+.continueplz.state
+
+# Logs
+*.log
+continueplz.log
+logs/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Go workspace
+go.work
+go.work.sum
+
+# Dependency directories
+vendor/
+
+# Debug
+__debug_bin*

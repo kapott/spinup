@@ -1,0 +1,20 @@
+# WireGuard Configuration Template for continueplz
+# This template generates client-side WireGuard configuration.
+#
+# Variables:
+#   .ClientPrivateKey     - Base64-encoded client private key
+#   .ClientAddress        - Client WireGuard IP (default: 10.13.37.2/24)
+#   .ServerPublicKey      - Base64-encoded server public key
+#   .ServerEndpoint       - Server public IP:port (e.g., 1.2.3.4:51820)
+#   .ServerAllowedIPs     - CIDR range for server (default: 10.13.37.1/32)
+#   .PersistentKeepalive  - Keepalive interval in seconds (default: 25)
+
+[Interface]
+PrivateKey = {{ .ClientPrivateKey }}
+Address = {{ .ClientAddress }}
+
+[Peer]
+PublicKey = {{ .ServerPublicKey }}
+Endpoint = {{ .ServerEndpoint }}
+AllowedIPs = {{ .ServerAllowedIPs }}
+PersistentKeepalive = {{ .PersistentKeepalive }}
