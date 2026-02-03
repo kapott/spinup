@@ -1,5 +1,5 @@
 # Binaries
-spinup
+/spinup
 build/
 dist/
 *.exe
